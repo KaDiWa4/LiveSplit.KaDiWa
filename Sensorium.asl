@@ -149,7 +149,8 @@ split
 	if (0 < newlyCheckedFlags)
 	{
 		// If game ended
-		if (0 < (newlyCheckedFlags & 0x40))
+		if (0 < (newlyCheckedFlags & 0x40)
+			&& (!settings["split_end_on_completion_only"] || (vars.watcher.Current & 0x0FFFFFFF) == 0x0FFFFFFF))
 		{
 			vars.ignoreReset = true; // Don't reset after the game was beaten
 			return settings["split_end"];
